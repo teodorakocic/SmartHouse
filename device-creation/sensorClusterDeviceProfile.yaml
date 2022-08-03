@@ -1,0 +1,63 @@
+name: "SensorClusterSmartHouse"
+manufacturer: "Raspberry Pi Foundation"
+model: "Smart house 1"
+labels:
+  - "smarthouse"
+description: "Sensor cluster providing metrics for energy consumed by specific devices in a smart house"
+
+deviceResources:
+      -
+        name: dishwasher
+        description: "Sensor cluster dishwasher energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: microwave
+        description: "Sensor cluster microwave energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: fridge
+        description: "Sensor cluster fridge energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: washingmachine
+        description: "Sensor cluster washing machine energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: tvairconditioner
+        description: "Sensor cluster tv and air conditioner energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: printerscanner
+        description: "Sensor cluster printer and scanner energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: furnace
+        description: "Sensor cluster furnace energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: garagedoor
+        description: "Sensor cluster garage door energy consumed values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+      -
+        name: generator
+        description: "Sensor cluster generator values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "10000", size: "8", LSB: "true", defaultValue: "0"}
+

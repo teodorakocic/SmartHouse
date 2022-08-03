@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  
+  <style>
+    .header {
+      padding: 40px;
+      text-align: start;
+      margin-right: 10px;
+      background: #f7d88b;
+      color: #f05e16;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+      font-weight: bold;
+    }
+
+    .main {
+      flex: 95%;
+      background-color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .image {
+      background-color: #fff992;
+      width: 20%;
+      padding: 10px;
+      margin-left: 525px;
+    }
+
+    .icon {
+      background-color: #fff992;
+      width: 25%;
+      padding: 10px;
+      margin-left: 125px;
+    }
+
+    .grid-container {
+      display: grid;
+      align-content: center;
+      grid-template-columns: auto auto auto auto;
+      gap: 10px;
+      background-color: #f7d88b;
+      padding: 10px;
+    }
+
+    .grid-container > div {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+
+    .warn {
+      text-align: start;
+      margin-left: 10px;
+      font-style: italic;
+    }
+
+  </style>
+
+  <body>
+    <div class="header">
+      <div class="title">
+        <h1>My Smart Home</h1>
+        <h2>Track energy consumption in your smart house</h2>
+      </div>
+      <img class="image" src="https://smanest.com/images/data/articles/smahome.jpg"></img>
+    </div>
+
+    <div class="main">
+      <h2 style="color: #f05e16;">ENERGY CONSUMPTION</h2>
+      <h3 style="color: #f0c200;">Where the consumption is higher than the value in the acceptable criteria?</h3>
+      <br/>
+      <div class="grid-container">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/776/776700.png" id="dishwasher"></img>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3570/3570224.png" id="microwave"></img>
+        <img class="icon" src="https://cdn-icons.flaticon.com/png/512/3650/premium/3650665.png?token=exp=1659435219~hmac=13996552977ef66f7118c2eb104928b8" id="fridge"></img>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1209/1209428.png" id="washingmachine"></img>
+        <img class="icon" src="https://cdn-icons.flaticon.com/png/512/574/premium/574253.png?token=exp=1659435069~hmac=4592efc05fc9f524baf14ed1e00059ca" id="tv"></img>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1547/1547966.png" id="printer"></img>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/5202/5202569.png" id="furnace"></img>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/887/887221.png" id="garage"></img>
+      </div>
+      <br/>
+      <h4 id="colorChanger" class="warn">The devices that consume electrical energy outside the defined limits are marked in the section above.</h4>
+      <p id="colorChanger"></p>
+      <br>
+    </div>
+
+    <script type=text/javascript src="{{
+      url_for('static', filename='jquery.js') }}">
+    </script>
+  
+    <script>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+          (function(){
+              $.getJSON(
+                  $SCRIPT_ROOT+"/_ajaxAutoRefresh", 
+                  function(data) {
+                  document.getElementById(data.color).style.border = "4px dotted #f05e16"
+                  setTimeout(function() {
+                    document.getElementsByClassName("icon").style.border = "initial"
+                  }, 1440000)
+                  }
+              );
+              setTimeout(arguments.callee, 1000);
+          })();
+    </script>
+
+  </body>
+</html>
