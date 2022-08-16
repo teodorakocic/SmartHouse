@@ -1,13 +1,13 @@
-name: "colorChanger"
+name: "energyConsumption"
 manufacturer: "teakocic.com"
 model: "smart00001"
 labels:
-  - "color changer"
+  - "energy consumption"
   - "smart house project"
 description: "App for EdgeX Foundry REST commands."
 
 deviceResources:
-  - name: color
+  - name: energy
     description: "JSON message"
     properties:
       value:
@@ -16,32 +16,32 @@ deviceResources:
         { type: "String", readWrite: "R" }
 
 deviceCommands:
-  - name: "color"
+  - name: "energy"
     get:
-      - { operation: "get", deviceResource: "color" }
+      - { operation: "get", deviceResource: "energy" }
     set:
-      - { operation: "set", deviceResource: "color", parameter: "color" }
+      - { operation: "set", deviceResource: "energy", parameter: "energy" }
 
 coreCommands:
   -
-    name: color
+    name: energy
     get:
-      path: "/read-color"
+      path: "/check-consumption"
       responses:
       -
         code: "200"
-        description: "get current color"
-        expectedValues: ["color"]
+        description: "get consumption"
+        expectedValues: ["energy"]
       -
         code: "503"
         description: "service unavailable"
         expectedValues: []
     put:
-      path: "/change-color"
+      path: "/change-logs"
       responses:
       -
         code: "201"
-        description: "set the color"
+        description: "set the new record"
       -
         code: "503"
         description: "service unavailable"

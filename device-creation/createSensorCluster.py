@@ -15,7 +15,6 @@ edgex_ip=args["ip"]
 def createValueDescriptors():
     url = 'http://%s:48080/api/v1/valuedescriptor' % edgex_ip
 
-
     payload =   {
                     "name":"dishwasher",
                     "description":"Energy consumed by dishwasher in W", 
@@ -179,8 +178,8 @@ def addNewDevice():
     url = 'http://%s:48081/api/v1/device' % edgex_ip
 
     payload =   {
-                    "name":"Sensor_cluster_smart_house",
-                    "description":"Sensor cluster for smart house",
+                    "name":"Sensor_cluster_smart_house_v2",
+                    "description":"Sensor cluster for smart house version 2.0",
                     "adminState":"unlocked",
                     "operatingState":"enabled",
                     "protocols": {
@@ -196,7 +195,7 @@ def addNewDevice():
                         "name":"edgex-device-rest"
                     },
                     "profile": {
-                        "name":"SensorClusterSmartHouse"
+                        "name":"SensorClusterSmartHouse2"
                     }
                 }
     headers = {'content-type': 'application/json'}

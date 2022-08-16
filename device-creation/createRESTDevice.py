@@ -19,7 +19,7 @@ def createAddressables():
     url = 'http://%s:48081/api/v1/addressable' % edgex_ip
 
     payload = {
-        "name":"SmartHouseProject",
+        "name":"SmartHouseProject2",
         "protocol":"HTTP",
         "address":device_ip,
         "port":5000,
@@ -34,13 +34,13 @@ def createValueDescriptors():
     url = 'http://%s:48080/api/v1/valuedescriptor' % edgex_ip
 
     payload =   {
-                    "name":"color",
-                    "description":"Color to be shown in test app web UI",
+                    "name":"energy",
+                    "description":"Consumed Energy to be shown in test app web UI",
                     "type":"Str",
-                    "uomLabel":"color",
-                    "defaultValue":"green",
+                    "uomLabel":"energy",
+                    "defaultValue":"",
                     "formatting":"%s",
-                    "labels":["color","smarthouseproject"]
+                    "labels":["energy","smarthouseproject2"]
                 }
     headers = {'content-type': 'application/json'}
     response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
@@ -68,11 +68,11 @@ def createDeviceService():
     payload = {
         "name":"rest-device-service",
         "description":"Gateway for control in energy consumption in a smart house",
-        "labels":["color","smarthouseproject"],
+        "labels":["energy","smarthouseproject2"],
         "adminState":"unlocked",
         "operatingState":"enabled",
         "addressable": {
-            "name":"SmartHouseProject"
+            "name":"SmartHouseProject2"
         }
     }
     headers = {'content-type': 'application/json'}
@@ -85,7 +85,7 @@ def addNewDevice():
     url = 'http://%s:48081/api/v1/device' % edgex_ip
 
     payload = {
-        "name": "SmartHouseProject",
+        "name": "SmartHouseProject2",
         "description": "Project for IoTs course",
         "adminState": "unlocked",
         "operatingState": "enabled",
@@ -97,18 +97,18 @@ def addNewDevice():
             }
         },
         "addressable": {
-            "name": "SmartHouseProject"
+            "name": "SmartHouseProject2"
         },
         "labels": [
             "energy",
-            "smarthouseproject"
+            "smarthouseproject2"
         ],
         "location": "nis",
         "service": {
             "name": "rest-device-service" 
         },
         "profile": {
-            "name": "colorChanger"
+            "name": "energyConsumption"
         }
     }
     headers = {'content-type': 'application/json'}

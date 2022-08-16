@@ -65,6 +65,48 @@
       font-style: italic;
     }
 
+    .button {
+      display: inline-block;
+      border-radius: 24px;
+      background-color: #f7d88b;
+      border: none;
+      color: #f05e16;
+      text-align: center;
+      font-style: oblique;
+      font-weight: 500;
+      font-size: 20px;
+      padding: 8px;
+      width: 275px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin-left: 1300px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
   </style>
 
   <body>
@@ -91,10 +133,11 @@
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/887/887221.png" id="garage"></img>
       </div>
       <br/>
-      <h4 id="colorChanger" class="warn">The devices that consume electrical energy outside the defined limits are marked in the section above.</h4>
-      <p id="colorChanger"></p>
+      <h4 id="energyConsumption" class="warn">The devices that consume electrical energy outside the defined limits are marked in the section above.</h4>
       <br>
     </div>
+
+    <button class="button" style="vertical-align:middle" onclick="window.location.href='http://localhost:5000/check-consumption';"><span>Check consumption </span></button>
 
     <script type=text/javascript src="{{
       url_for('static', filename='jquery.js') }}">
@@ -106,14 +149,18 @@
               $.getJSON(
                   $SCRIPT_ROOT+"/_ajaxAutoRefresh", 
                   function(data) {
-                  document.getElementById(data.color).style.border = "4px dotted #f05e16"
+                  document.getElementById(data.energy).style.border = "4px dotted #f05e16"
                   setTimeout(function() {
                     document.getElementsByClassName("icon").style.border = "initial"
-                  }, 1440000)
+                  }, 1545000)
                   }
               );
-              setTimeout(arguments.callee, 1000);
+              setTimeout(arguments.callee, 5000);
           })();
+    </script>
+
+    <script>
+      
     </script>
 
   </body>

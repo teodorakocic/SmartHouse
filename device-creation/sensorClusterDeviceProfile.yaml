@@ -1,8 +1,8 @@
-name: "SensorClusterSmartHouse"
+name: "SensorClusterSmartHouse2"
 manufacturer: "Raspberry Pi Foundation"
-model: "Smart house 1"
+model: "Smart house v2.0"
 labels:
-  - "smarthouse"
+  - "smarthouse2"
 description: "Sensor cluster providing metrics for energy consumed by specific devices in a smart house"
 
 deviceResources:

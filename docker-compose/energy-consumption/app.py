@@ -1,9 +1,10 @@
 from os import environ
 from flask import Flask, render_template, request, make_response, jsonify
 from flask_restful import reqparse
+import json
 
 app = Flask(__name__)
-color = ""
+energy = ""
 
 
 @app.route('/')
@@ -14,7 +15,7 @@ def index():
 
 @app.route('/_ajaxAutoRefresh', methods= ['GET'])
 def stuff():
-    return jsonify(color=color)
+    return jsonify(energy=energy)
 
 
 @app.route('/register', methods=['POST'])
@@ -34,30 +35,29 @@ def register():
     return returnData, 201
 
 
-@app.route('/change-color', methods=['PUT'])
-def change_color():
-    global color
+@app.route('/change-logs', methods=['PUT'])
+def change_logs():
+    global energy
     request.get_json(force=True)
 
     parser = reqparse.RequestParser()
-    parser.add_argument('color', required=True)
+    parser.add_argument('energy', required=True)
     args = parser.parse_args()
 
-    color = (args['color'])
+    energy = (args['energy'])
     
-    print("Changing color to", color)
+    print("Changing energy to", energy)
     
     returnData = "Command accepted"
 
     return returnData, 201
     
-@app.route('/read-color', methods=['GET'])
-def read_color():
-    global color
+@app.route('/check-consumption', methods=['GET'])
+def check_consumption():
+    with open('logData.json', 'r') as f:
+        data = json.load(f)
     
-    print("Reading color")
-    
-    returnData = color
+    returnData = "Energy consumed last week in total for all devices is " + str(data["totalWeek"]) + " W, and from beggining of this month consumption until now totals " + str(data["totalMonth"]) + " W."
     
     return returnData, 201
 

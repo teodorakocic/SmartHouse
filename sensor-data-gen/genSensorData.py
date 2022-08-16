@@ -18,7 +18,7 @@ furnaceList = list()
 garageDoorList = list()
 generatedEnergyList = list()
 
-with open("HomeC.csv", "r") as file:
+with open("sensor-data-gen\HomeC.csv", "r") as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
         dishwasherList.append(row['Dishwasher'])
@@ -59,49 +59,49 @@ if __name__ == "__main__":
 
         (dishwasher, microwave, fridge, washingmachine, tvairconditioner, printerscanner, furnace, garagedoor, generator) = generateSensorData()
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_project_iii/dishwasher' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/dishwasher' % edgexip
         payload = dishwasher
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/microwave' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/microwave' % edgexip
         payload = microwave
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/fridge' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/fridge' % edgexip
         payload = fridge
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/washingmachine' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/washingmachine' % edgexip
         payload = washingmachine
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/tvairconditioner' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/tvairconditioner' % edgexip
         payload = tvairconditioner
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/printerscanner' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/printerscanner' % edgexip
         payload = printerscanner
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/furnace' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/furnace' % edgexip
         payload = furnace
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/garagedoor' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/garagedoor' % edgexip
         payload = garagedoor
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
 
-        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house/generator' % edgexip
+        url = 'http://%s:49986/api/v1/resource/Sensor_cluster_smart_house_v2/generator' % edgexip
         payload = generator
         headers = {'content-type': 'application/json'}
         response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
-
+        
         time.sleep(5)

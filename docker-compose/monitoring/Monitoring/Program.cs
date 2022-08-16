@@ -18,7 +18,7 @@ namespace Monitoring
             if (topic == null)
                 topic = "edgex-tutorial";
             if (deviceAddress == null)
-                deviceAddress = "http://127.0.0.1:48082/api/v1/device/name/SmartHouseProject/command/color";
+                deviceAddress = "http://127.0.0.1:48082/api/v1/device/name/SmartHouseProject2/command/energy";
 
             var mqttClient = mqttFactory.CreateMqttClient();
 
@@ -31,18 +31,18 @@ namespace Monitoring
                 string s = System.Text.Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
                 SensorDataMessage m = JsonConvert.DeserializeObject<SensorDataMessage>(s);
 
-                string color = "";
+                string energy = "";
                 if(m.Readings?.Count > 0)
-                    color = Evaluate(m.Readings[0]);
-                if (!String.IsNullOrEmpty(color))
+                    energy = Evaluate(m.Readings[0]);
+                if (!String.IsNullOrEmpty(energy))
                 {
-                    Console.Write(color + "\t");
+                    Console.Write(energy + "\t");
                     HttpClient client = new HttpClient();
                     HttpResponseMessage rm = client.PutAsync(deviceAddress,
                             new StringContent(JsonConvert.SerializeObject(
                                 new
                                 {
-                                    color
+                                    energy
                                 }),
                                 System.Text.Encoding.UTF8,
                                 "application/json")).Result;
