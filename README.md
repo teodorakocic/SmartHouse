@@ -14,7 +14,7 @@ for notes on deploying the project on a live system.
 ### Prerequisites
 
 Requirements for the software and other tools to build, test and push 
-- [https://www.docker.com]
+- https://www.docker.com
 
 ### Installing
 
@@ -23,7 +23,7 @@ environment running
 
 1. Position yourself from console into the directory docker-compose
 	
-	cd docker-compose
+	```cd docker-compose```
 
 2. From file docker-compose run the following command
 
