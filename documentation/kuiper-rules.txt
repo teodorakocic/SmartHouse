@@ -1,0 +1,156 @@
+Svaki zahtev se može proslediti kroz Postman. U pitanju su POST zahtevi čiji je URL: http://0.0.0.0:48075/rules. Pravila za svaki od uređaja definisana su u okviru tela upita (opcija Body -> raw -> JSON):
+
+	1. Dishwasher - {
+						"id": "DishwasherRule",
+						"sql": "SELECT dishwasher FROM energy_consumption GROUP BY TUMBLINGWINDOW(ss, 20) HAVING avg(dishwasher) > 2.5",
+						"actions": [
+							{
+								"rest": {
+									"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+									"method": "put",
+									"retryInterval": -1,
+									"dataTemplate": "{\"energy\":\"dishwasher\"}",
+									"sendSingle": true
+								}
+							},
+							{
+								"log":{}
+							}
+						]
+					}
+		
+		
+	2.	Microwave - {
+						"id": "MicrowaveRule",
+						"sql": "SELECT microwave FROM energy_consumption GROUP BY HOPPINGWINDOW(ss, 25, 15) HAVING max(microwave)-min(microwave) > 2",
+						"actions": [
+							{
+								"rest": {
+									"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+									"method": "put",
+									"retryInterval": -1,
+									"dataTemplate": "{\"energy\":\"microwave\"}",
+									"sendSingle": true
+								}
+							},
+							{
+								"log":{}
+							}
+						]
+					}
+
+	3. 	TV and Air conditioner - 	{
+										"id": "TvAirConditionerRule",
+										"sql": "SELECT sum(tvairconditioner) FROM energy_consumption WHERE TvAirConditionerRule>300 GROUP BY TUMBLINGWINDOW(ss, 30) HAVING sum(tvairconditioner) > 1500",
+										"actions": [
+											{
+												"rest": {
+													"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+													"method": "put",
+													"retryInterval": -1,
+													"dataTemplate": "{\"energy\":\"tv\"}",
+													"sendSingle": true
+												}
+											},
+											{
+												"log":{}
+											}
+										]
+									}
+								
+	4.	Washing machine - 	{
+								"id": "WashingMachineRule",
+								"sql": "SELECT washingmachine, avg(washingmachine) FROM energy_consumption GROUP BY HOPPINGWINDOW(ss, 25, 20) HAVING max(washingmachine) - 	min(washingmachine) = avg(washingmachine)",
+								"actions": [
+									{
+										"rest": {
+											"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+											"method": "put",
+											"retryInterval": -1,
+											"dataTemplate": "{\"energy\":\"washingmachine\"}",
+											"sendSingle": true
+										}
+									},
+									{
+										"log":{}
+									}
+								]
+							}
+							
+	5.	Printer and Scanner - 	{
+									"id": "PrinterScannerRule",
+									"sql": "SELECT printerscanner FROM energy_consumption WHERE ceil(sqrt(printerscanner)) >= 25",
+									"actions": [
+										{
+											"rest": {
+												"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+												"method": "put",
+												"retryInterval": -1,
+												"dataTemplate": "{\"energy\":\"printer\"}",
+												"sendSingle": true
+											}
+										},
+										{
+											"log":{}
+										}
+									]
+								}
+
+	6. Fridge - {
+					"id": "FridgeRule",
+					"sql": "SELECT fridge FROM energy_consumption WHERE trunc(log(fridge),2) >= 2.65",
+					"actions": [
+						{
+							"rest": {
+								"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProjec2t/command/energy",
+								"method": "put",
+								"retryInterval": -1,
+								"dataTemplate": "{\"energy\":\"fridge\"}",
+								"sendSingle": true
+							}
+						},
+						{
+							"log":{}
+						}
+					]
+				}
+
+	7. Furnace - {
+					"id": "FurnaceRule",
+					"sql": "SELECT furnace FROM energy_consumption WHERE furnace / 50 >= 2",
+					"actions": [
+						{
+							"rest": {
+								"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+								"method": "put",
+								"retryInterval": -1,
+								"dataTemplate": "{\"energy\":\"furnace\"}",
+								"sendSingle": true
+							}
+						},
+						{
+							"log":{}
+						}
+					]
+				}
+
+	8. Garage door - {
+						"id": "GarageDoorRule",
+						"sql": "SELECT garagedoor FROM energy_consumption WHERE garagedoor > 99",
+						"actions": [
+							{
+								"rest": {
+									"url": "http://edgex-core-command:48082/api/v1/device/name/SmartHouseProject2/command/energy",
+									"method": "put",
+									"retryInterval": -1,
+									"dataTemplate": "{\"energy\":\"garage\"}",
+									"sendSingle": true
+								}
+							},
+							{
+								"log":{}
+							}
+						]
+					}
+
+
