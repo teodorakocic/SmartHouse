@@ -1,0 +1,29 @@
+Execute the following set of steps and commands in order to set Your worspace in OpenWhisk:
+	 
+	1. Go to the https://cloud.ibm.com/login 
+	
+	2. Login with: 		
+					- username: aleksandar.milosavljevic.18@ucl.ac.uk
+					- password: Aleks00=Best
+					
+	3. Click on the top left drop-down menu -> Functions -> Actions
+	
+	4. You will be working with the sequence of actions called notify_the_user and click on the sequence from the list 
+	
+	5. If You want to change a recipient for the mail action, click on the action mail when inside the notify_the_user sequence and put Your e-mail
+	
+	6. If You want to change a recipient's phone number, click on the action textmessage when inside the notify_the_user sequence -> from the menu on the left side choose
+	option Parameters -> change the parameter TO to Your phone number
+		
+	7. If changing of phone number is not working properly, You need to make an account on https://www.twilio.com and after that set all of the parameters (to, from, account_sid, auth_token) inside the action textmessage to Your new user settings
+	
+	8. For the trigger You need to login through Your console:
+		
+		- ibmcloud login -u aleksandar.milosavljevic.18@ucl.ac.uk
+		- for the Password type Aleks00=Best
+		- ibmcloud target -g Default
+		- ibmcloud property set --namespace Namespace-K4E
+	
+	9. ibmcloud fn trigger create <name_for_trigger> --feed /whisk.system/alarms/alarm --param cron "0 */3 * * *" --param startDate "2022-08-15T08:45:00.000Z" --param stopDate "2022-08-15T18:40:00.000Z"
+	
+	10. In the previous step set start date and stop date for whatever You wish. This trigger will be fired every 3 hours (in my simulation that is one week) from the moment described through start date until the stop date. This format "2022-08-15T18:40:00.000Z" stands for 15th of August 2022. and the time is 20:40:00 CEST (UTC+2)
