@@ -8,7 +8,9 @@ sender = "smarthouseassistant@outlook.com"
 recipient = "teakocic99@gmail.com"
 sender_password = "SmartAssistant2022"
 
-message = """\nIf You want to track the consumption of electric energy in Your smart home, also for more information about how much energy You have used in last week, month, year in Your smart house, visit the http://localhost:5000 page.\n\nSmart House Assistant"""
+message = """Subject: Smart house notification
+
+\nIf You want to track the consumption of electric energy in Your smart home, also for more information about how much energy You have used in last week, month, year in Your smart house, visit the http://localhost:5000 page.\n\nSmart House Assistant"""
 
 SSL_context = ssl.create_default_context()
 
