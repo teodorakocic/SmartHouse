@@ -16,6 +16,7 @@ your local machine for development and testing purposes.
 Requirements for the software and other tools to build, test and push 
 - [Docker](https://www.docker.com)
 
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development
@@ -71,6 +72,7 @@ environment running
 ## Authors
 
   - **Teodora Kocic**
+  
 
 ## Acknowledgments
 
