@@ -1,6 +1,6 @@
 # Smart House
 
-An IoT system based on a microservice platform and functions as a service for consumption control of electric energy in a smart house.
+An IoT system based on a microservice platform and functions as a service for controling the consumptin of electric energy in a smart house.
 
 <img style="margin: 10px" src="https://raw.githubusercontent.com/teodorakocic/SmartHouse/main/documentation/images/readme.JPG" />
 
