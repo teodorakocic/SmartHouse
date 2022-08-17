@@ -14,7 +14,7 @@ your local machine for development and testing purposes.
 ### Prerequisites
 
 Requirements for the software and other tools to build, test and push 
-- [Docker] (https://www.docker.com)
+- [Docker](https://www.docker.com)
 
 ### Installing
 
@@ -48,7 +48,7 @@ environment running
 	```python genSensorData.py```
 	```python trackLogs.py```
 	
-7. Set a few kuiper rules by following the steps described in the section [documentation/kuiper-rules] (https://github.com/teodorakocic/SmartHouse/blob/961d207c10737056e668b3af6131f559480900d9/documentation/kuiper-rules.txt) (listed rules are supported in older versions of EdgeX and eKuiper)
+7. Set a few kuiper rules by following the steps described in the section [documentation/kuiper-rules](https://github.com/teodorakocic/SmartHouse/blob/961d207c10737056e668b3af6131f559480900d9/documentation/kuiper-rules.txt) (listed rules are supported in older versions of EdgeX and eKuiper)
 
 	```Printer and Scanner rule```
 	```Fridge rule```
@@ -65,7 +65,7 @@ environment running
 	- `Dashboards` > `New dashboard` > `Add a new panel`
 	- In the section `select measurement` choose *sensor_cluster_smart_house_v2*
 	
-10. If You want to get notifications and see all of the application functionality You need to change the parameters for openwhisk actions, so please check the section [documentation/openwhisk-setup] (https://github.com/teodorakocic/SmartHouse/blob/961d207c10737056e668b3af6131f559480900d9/documentation/openwhisk-setup.txt)
+10. If You want to get notifications and see all of the application functionality You need to change the parameters for openwhisk actions, so please check the section [documentation/openwhisk-setup](https://github.com/teodorakocic/SmartHouse/blob/7e47d192e63b3a26f75d0ce035ac53046af1b1a4/documentation/openwhisk-setup.txt)
 
 
 ## Authors
