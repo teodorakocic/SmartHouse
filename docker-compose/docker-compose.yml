@@ -191,7 +191,7 @@ services:
   app-service-rules:
     image: edgexfoundry/docker-app-service-configurable:1.2.0
     ports:
-      - "0.0.0.0:48100:48100"
+      - "0.0.0.0:48102:48102"
     container_name: edgex-app-service-configurable-rules
     hostname: edgex-app-service-configurable-rules
     networks:
@@ -200,7 +200,7 @@ services:
       <<: *common-variables
       edgex_profile: rules-engine
       Service_Host: edgex-app-service-configurable-rules
-      Service_Port: 48100
+      Service_Port: 48102
       MessageBus_SubscribeHost_Host: edgex-core-data
       Binding_PublishTopic: events
     depends_on:

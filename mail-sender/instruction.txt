@@ -1,0 +1,7 @@
+Please, do the following steps in order to see the amount of energy that devices have consumped until now:
+
+1.	Go to URL http://localhost:3000 and log as admin with password admin
+2.	Configuration > Data Sources > Add new data source > InfluxDB
+3.	Set: URL on http://influxdb-edgex:8086, Database on sensordata, User and Password are both admin
+4.	Dashboards > New dashboard > Add a new panel
+5.	In the section select measurement choose sensor_cluster_smart_house_v2
